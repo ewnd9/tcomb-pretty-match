@@ -1,0 +1,46 @@
+{
+  "name": "tcomb-pretty-match",
+  "description": "Colorful diff for tcomb-validation",
+  "version": "0.0.0",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint 'src/**/*.js'",
+    "precommit": "npm run lint",
+    "test": "ava",
+    "test:watch": "npm run test -- --watch"
+  },
+  "engines": {
+    "node": ">=6.0"
+  },
+  "keywords": [
+    "tcomb",
+    "validation"
+  ],
+  "dependencies": {
+    "chalk": "^1.1.3",
+    "clone": "^2.0.0",
+    "diff": "^3.0.1",
+    "lodash.set": "^4.3.2"
+  },
+  "peerDependencies": {
+    "tcomb-validation": ">=3.0.0"
+  },
+  "devDependencies": {
+    "ava": "^0.14.0",
+    "babel-eslint": "^6.0.0",
+    "eslint": "^3.0.0",
+    "husky": "^0.11.6",
+    "tcomb-validation": "^3.2.2"
+  },
+  "author": "ewnd9 <ewndnine@gmail.com>",
+  "files": [
+    "index.js",
+    "ava.js",
+    "lib"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ewnd9/tcomb-pretty-match.git"
+  }
+}
