@@ -16,7 +16,7 @@ function match(obj, schema, options = {}) {
   if (errorMessage) {
     throw new Error(errorMessage);
   }
-};
+}
 
 function getError(obj, schema, options) {
   const result = t.validate(obj, schema, options);
