@@ -24,18 +24,11 @@ const User = t.struct({ username: t.String });
 
 test('user valid', t => {
   match({ username: 'admin' }, User); // nothing
-  match({ username: 1 }, User);
-  /*
-  throws
-
-  | {
-  +   "username": 1
-  -   "username": "typeof String"
-  | }
-
-  */
+  match({ username: 1 }, User); // screenshot below
 });
 ```
+
+![Demonstration](/screen.png?raw=true)
 
 ### ava with helper
 
