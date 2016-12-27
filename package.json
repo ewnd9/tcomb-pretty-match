@@ -1,7 +1,7 @@
 {
   "name": "tcomb-pretty-match",
   "description": "Colorful diff for tcomb-validation",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "main": "index.js",
   "scripts": {
     "lint": "eslint '*.js'",
