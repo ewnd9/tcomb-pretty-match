@@ -3,9 +3,11 @@
 const t = require('tcomb-validation');
 
 const set  = require('lodash.set');
-const chalk = require('chalk');
 const { diffJson } = require('diff');
 const clone = require('clone');
+
+const chalk = require('chalk');
+chalk.enabled = true;
 
 module.exports = match;
 module.exports.getError = getError;
@@ -36,7 +38,7 @@ function getError(obj, schema, options) {
     }
 
     // https://github.com/avajs/ava/issues/406#issuecomment-218329720
-    const diff = diffJson(obj, errorObject)
+    const diff = diffJson(obj, errorObject, { undefinedReplacement: 'undefined' })
       .map(part => {
         if (part.added) return chalk.green(part.value.replace(/.+/g, '    - $&'));
         if (part.removed) return chalk.red(part.value.replace(/.+/g, '    + $&'));

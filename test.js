@@ -10,22 +10,21 @@ const types = {
   Number: t.Number
 };
 
-test('default', t => {
+test('default', async t => {
   match({ username: 'admin' }, types.User);
   t.throws(() => match({ username: 123 }, types.User));
 
-  t.throws(
-    () => match({ id: 1, username: 'admin' }, types.User, { strict: true }),
-    err => {
-      const parts = err.message.trim().split('\n');
+  const err = await t.throws(() => match({ id: 1, username: 'admin', age: undefined }, types.User, { strict: true }));
 
-      return (parts[0] === '\u001b[90m    | {' &&
-              parts[1] === '\u001b[39m\u001b[31m    +   "id": 1,' &&
-              parts[2] === '\u001b[39m\u001b[32m    -   "id": "typeof Nil",' &&
-              parts[3] === '\u001b[39m\u001b[90m    |   "username": "admin"' &&
-              parts[4] === '    | }\u001b[39m');
-    }
-  );
+  t.deepEqual(err.message.trim().split('\n'), [
+    '\u001b[90m    | {',
+    '\u001b[39m\u001b[31m    +   \"age\": \"undefined\",',
+    '    +   \"id\": 1,',
+    '\u001b[39m\u001b[32m    -   \"age\": \"typeof Nil\",',
+    '    -   \"id\": \"typeof Nil\",',
+    '\u001b[39m\u001b[90m    |   \"username\": \"admin\"',
+    '    | }\u001b[39m'
+  ]);
 });
 
 test('ava helper', t => {
